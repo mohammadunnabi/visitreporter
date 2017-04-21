@@ -1,0 +1,5 @@
+<?xml version="1.0"?><!--httpGet===1--><!--HttpPost===2--><!--httpPut===3-->
+<class>
+    <services http_method="2" url="Geo.php"></services>
+    <services http_method="2" url="zone.php"></services>
+</class>

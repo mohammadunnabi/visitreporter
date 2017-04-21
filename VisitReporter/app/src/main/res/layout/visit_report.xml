@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    style="@style/Theme.MyDialog"
+    android:padding="10dp" >
+
+<Button
+    android:id="@+id/btnMarket"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Market"/>
+    <Button
+        android:id="@+id/btnDealer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Dealer"/>
+    <Button
+        android:id="@+id/btnOutlet"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="Outlet"/>
+    <Switch
+        android:id="@+id/swEndVisit"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+        android:textSize="22dp"
+    android:text="End Visit"/>
+<EditText
+    android:id="@+id/etComment"
+    android:hint="Comment"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:lines="3"/>
+    <LinearLayout
+
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/btnConfirm"
+            android:layout_weight=".8"
+            android:layout_width="0sp"
+            android:layout_height="wrap_content"
+            android:text="Confirm"/>
+    </LinearLayout>
+</LinearLayout>

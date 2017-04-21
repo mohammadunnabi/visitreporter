@@ -1,0 +1,8 @@
+<?xml version="1.0"?><!--httpGet===1--> <!--HttpPost===2--> <!--httpPut===3-->
+<class>
+    <services http_method="2" table_name="tbl_report" unique_column="id"
+        update_column="is_synced" url="sync_report.php"></services>
+    <services http_method="2" table_name="tbl_discussion" unique_column="id"
+        update_column="is_synced" url="sync_discussion.php"></services>
+
+</class>
