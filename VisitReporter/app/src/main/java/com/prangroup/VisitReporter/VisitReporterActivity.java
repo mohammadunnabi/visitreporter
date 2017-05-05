@@ -1,13 +1,17 @@
 package com.prangroup.VisitReporter;
-
+import android.Manifest;
+import android.accounts.Account;
+import android.accounts.AccountManager;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -36,6 +40,7 @@ import com.prangroup.VisitReporter.BusinessObjects.User;
 import com.prangroup.VisitReporter.BusinessObjects.Visit;
 import com.prangroup.VisitReporter.BusinessObjects.VisitList;
 import com.prangroup.VisitReporter.DataStore.SyncUtils;
+import com.prangroup.VisitReporter.GPSTracker.GPSTracker;
 import com.prangroup.VisitReporter.Model.VisitModel;
 import com.prangroup.VisitReporter.Utility.Calender;
 
@@ -221,6 +226,19 @@ public class VisitReporterActivity extends AppCompatActivity implements Navigati
         int id = item.getItemId();
         if (id == R.id.logout) {
             user.clearUser();
+            AccountManager am = AccountManager.get(getApplicationContext());
+            try {
+                if (ActivityCompat.checkSelfPermission(VisitReporterActivity.this, Manifest.permission.GET_ACCOUNTS) != PackageManager.PERMISSION_GRANTED) {
+                    return false;
+                }
+                Account[] accounts = AccountManager.get(getApplicationContext()).getAccountsByType(getString(R.string.Account));
+                for (Account account : accounts) {
+                    am.removeAccount(account, null, null);
+                }
+            } catch (Exception e) {
+            }
+            Intent service = new Intent(getApplicationContext(), GPSTracker.class);
+            stopService(service);
             Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
             startActivity(intent);
             finish();
@@ -237,6 +255,20 @@ public class VisitReporterActivity extends AppCompatActivity implements Navigati
             SyncUtils.TriggerRefresh();
         } else if (id == R.id.navLogout) {
             user.clearUser();
+            AccountManager am = AccountManager.get(getApplicationContext());
+            try {
+                if (ActivityCompat.checkSelfPermission(VisitReporterActivity.this, Manifest.permission.GET_ACCOUNTS) != PackageManager.PERMISSION_GRANTED) {
+                    return false;
+                }
+                Account[] accounts = AccountManager.get(getApplicationContext()).getAccountsByType(getString(R.string.Account));
+                for (Account account : accounts) {
+                    am.removeAccount(account, null, null);
+                }
+            } catch (Exception e) {
+            }
+            Intent service = new Intent(getApplicationContext(), GPSTracker.class);
+            stopService(service);
+
             Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
             startActivity(intent);
             finish();
